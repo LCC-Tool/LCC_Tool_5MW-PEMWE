@@ -1,15 +1,12 @@
 import numpy as np
 import pandas as pd
+from sklearn.metrics import mean_squared_error
+from math import sqrt
+
 import matplotlib.pyplot as plt
 from IPython.display import clear_output
 
-from sklearn.metrics import mean_squared_error
-
-from math import sqrt
-
-
-# - Prodiction -
-# Predicting packages: prophet
+# Prediction packages
 from prophet import Prophet
 from statsmodels.tsa.arima.model import ARIMA
 from statsforecast import StatsForecast
@@ -93,7 +90,8 @@ def prophet_fit_predict_elc(odf, var="BNV", years=50, plot=True):
     
     return prediction
 
-# Elctricity cost S2 prediction (the first 3 years): influence of war and epidemic will only last for 3 years, after that, everything will back to normal.
+# Elctricity cost S2 prediction (the first 3 years): influence of war and epidemic 
+# will only last for 3 years, after that, everything will back to normal.
 def prophet_fit_predict_3_years_after_war(odf, var="BNV", years=50, plot=True):
     """
         fit a prophet model and predict for future dates.
@@ -131,7 +129,8 @@ def prophet_fit_predict_3_years_after_war(odf, var="BNV", years=50, plot=True):
     
     return prediction
 
-# Elctricity cost S2 prediction (after 3 years): influence of war and epidemic will only last for 3 years, after that, everything will back to normal.
+# Elctricity cost S2 prediction (after 3 years): influence of war and epidemic 
+# will only last for 3 years, after that, everything will back to normal.
 def prophet_fit_predict_elc_rest(odf, var="BNV", years=50, plot=True):
     """
         fit a prophet model and predict for future dates.
@@ -215,7 +214,6 @@ def operation_cost(resource_cost, maintenance_cost, full=False, **kwargs):
 
     if isinstance(resource_cost, list):
         n_resource_cost = []
-        #n_resource_cost.append(resource_cost[0])
         del resource_cost[0]
 
         for _ in range(20):
@@ -226,53 +224,15 @@ def operation_cost(resource_cost, maintenance_cost, full=False, **kwargs):
         for t, r in enumerate(n_resource_cost):
             op_cost += (r/((1+wacc_r)**t+1))
             op_cost_t += (((sum(n_resource_cost)+maintenance_cost)/20)/((1+wacc_r)**t+1))
-            #print(f"---- {t} ----")
-            #print(f"resource: {r}")
-            #print(f"Q: {((1+wacc_r)**t+1)}")
     else:
         for t in range(20):
             op_cost += ((resource_cost+maintenance_cost/20)/((1+wacc_r)**t+1))
-            #print(f"---- {t} ----")
-            #print(f"Q: {((1+wacc_r)**t+1)}")
 
     print(f"Labour Cost: {op_labour}")
     print(f"End of life Cost: {eol_val}")
 
     return (op_labour + op_cost)
 
-
-# for OPEX (without End-of-Life Cost)
-def operation_cost_without_eol(resource_cost, full=False, **kwargs):
-    op_labour = op_labour_cost(**kwargs)
-    wacc_r=wacc_real(**kwargs)
-    if not full:
-        op_cost_try = 0
-
-    if isinstance(resource_cost, list):
-        n_resource_cost = []
-        #n_resource_cost.append(resource_cost[0])
-        #del resource_cost[0]
-
-        for _ in range(20):
-            n_resource_cost.append((resource_cost[0]+resource_cost[1]))
-            del resource_cost[0]
-            del resource_cost[0]
-
-        for t, r in enumerate(n_resource_cost):
-            op_cost_try += (r/((1+wacc_r)**t+1))
-            op_cost_try += ((sum(n_resource_cost)/20)/((1+wacc_r)**t+1))
-            #print(f"---- {t} ----")
-            #print(f"resource: {r}")
-            #print(f"Q: {((1+wacc_r)**t+1)}")
-    else:
-        for t in range(20):
-            op_cost_try += ((resource_cost/20)/((1+wacc_r)**t+1))
-            #print(f"---- {t} ----")
-            #print(f"Q: {((1+wacc_r)**t+1)}")
-
-    print(f"Labour Cost: {op_labour}")
-
-    return (op_labour + op_cost_try)
 
 # for Tax impact
 def tax_impact(resource_cost, depreciation, tax_rate, int_on_debt, **kwargs):
@@ -290,9 +250,6 @@ def tax_impact(resource_cost, depreciation, tax_rate, int_on_debt, **kwargs):
 
     for t, r in enumerate(n_resource_cost):
         tax_impct += ((r+int_on_debt+depreciation)/((1+wacc_r)**t+1))
-        print(f"---- {t} ----")
-        print(f"Tax Redemption Elements: {r+int_on_debt+depreciation}")
-        print(f"Q: {((1+wacc_r)**t+1)}")
 
     return tax_rate*tax_impct
 
@@ -313,42 +270,37 @@ def levelized_cost_of_h2(life_cycle_cost_of_h2, h2_production, **kwargs):
 
 
 # For Monaco
-# focuse: CAPEX-equation
+# focus: CAPEX-equation
 def monte_capex(material, ictg, capex_labour, **kwargs):
     rwacc = wacc_real(**kwargs)
     return (material + capex_labour - ictg)/((1 + rwacc)**0)
 
-# focuse: CAPEX-material
+# focus: CAPEX-material
 def monte_pem_capex_5mw_soa(steel, copper, titanium, platin, iridium,
                             carbon_paper, nafion_N117, 
                             FKM, heat_exchanger_stack_cooling, 
                             heat_exchanger_condenser, 
                             gas_water_separators, dry_cooler, 
                             power_cable, data_cable, pumps, inverters, control_unit,
-                            housing, foundation, con_labour):
+                            housing, foundation):
     
     return (6253*steel + 68*copper + 3987*titanium + 0.67*platin + 9.86*iridium + 329*carbon_paper + \
             88.54*nafion_N117 + 1*FKM + 1*heat_exchanger_stack_cooling + 1*heat_exchanger_condenser + \
             2*gas_water_separators + 1*dry_cooler + 50*power_cable + 2000*data_cable + 6*pumps + \
-            22*inverters + 1*control_unit + 2*housing + 4.5*foundation + 1*con_labour)
+            1*inverters + 1*control_unit + 2*housing + 4.5*foundation)
 
-# focuse: OPEX-energy
+# focus: OPEX-energy
 def monte_res_cost(water_price, electricity_price, op_labour):
     return (water_price + electricity_price + op_labour)
 
-# focuse: OPEX-equation (without End-of-Life cost)
-def monte_op_cost(eol_cost, op_cost, **kwargs):
-    op_cost = operation_cost_without_eol(**kwargs)
-    return (op_cost - eol_cost)
-
-# focuse: OPEX-equation (with End-of-Life cost)
+# focus: OPEX-equation
 def monte_opex(op_cost, op_labour, eol_cost):
-    return (op_cost + op_labour - eol_cost)
+    return (op_cost + op_labour + eol_cost)
 
-# focuse: End-of-Life cost-equation
+# focus: End-of-Life cost-equation
 def monte_eol_cost(transport_cost_disposal, salvage_value, decon_cost):
     return (decon_cost + transport_cost_disposal - salvage_value)
 
-# focuse: TCO-equation
-def monte_lcc(investment_cost, opr_cost, eolc_cost, tax_impact):
-    return (investment_cost + opr_cost - eolc_cost - tax_impact)
+# focus: TCO-equation
+def monte_lcc(investment_cost, opr_cost, tax_impact):
+    return (investment_cost + opr_cost - tax_impact)
