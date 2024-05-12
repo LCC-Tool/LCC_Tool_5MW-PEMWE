@@ -263,8 +263,11 @@ def levelized_cost_of_h2(life_cycle_cost_of_h2, h2_production, **kwargs):
     h2_p = 0
     for t in range(20):
         h2_p += ((h2_production/20)/((1+wacc_r)**t+1))
-        print(f"---- {t} ----")
-        print(f"Q: {((1+wacc_r)**t+1)}")
+    # If:
+    #   detailed data is needed
+    # Then:
+    #   print(f"---- {t} ----")
+    #   print(f"Q: {((1+wacc_r)**t+1)}")
 
     return (life_cycle_cost_of_h2/h2_p)
 
