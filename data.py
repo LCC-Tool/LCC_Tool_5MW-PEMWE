@@ -1,11 +1,10 @@
 import numpy as np
 import pandas as pd
+from sklearn.metrics import mean_squared_error
+from math import sqrt
+
 import matplotlib.pyplot as plt
 from IPython.display import clear_output
-
-from sklearn.metrics import mean_squared_error
-
-from math import sqrt
 
 
 # - Water Data -
