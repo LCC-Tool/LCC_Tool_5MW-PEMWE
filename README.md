@@ -34,7 +34,11 @@ We welcome you to reach out for assistance or to provide feedback at any time!
   yajing.chen@tu-clausthal.de
   
 ### Acknowledgments:
+<<<<<<< HEAD
 Funding: This work was supported by the Energie-Forschungszentrum Niedersachsen (efzn) , the conclusions of this paper are built on the SeLeKT-H2 project.
+=======
+Funding: This work was supported by the Energie-Forschungszentrum Niedersachsen (EFZN) , the conclusions of this paper are built on the SeLeKT-H2 project.
+>>>>>>> e7f2fe447bd6859c5c89b4efe8da4ed008a11179
 
 ## License
 MIT License with Commons Clause
