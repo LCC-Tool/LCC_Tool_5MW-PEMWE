@@ -27,13 +27,14 @@ We welcome you to reach out for assistance or to provide feedback at any time!
 ### Authors:
 - Yajing Chen
 - Mohamed Benchat
+- Christine Minke
 
 ### Corresponding Author:
-- Christine Minke
-  christine.minke@tu-clausthal.de
+- Yajing Chen
+  yajing.chen@tu-clausthal.de
   
 ### Acknowledgments:
-We would like to express our sincere gratitude to Frau Dr. Christine Minke for her valuable guidance and insightful feedback throughout the development of this tool. We also thank the Energie-Forschungszentrum Niedersachsen (EFZN) for providing financial support to this project.
+Funding: This work was supported by the Energie-Forschungszentrum Niedersachsen (efzn) , the conclusions of this paper are built on the SeLeKT-H2 project.
 
 ## License
 MIT License with Commons Clause
