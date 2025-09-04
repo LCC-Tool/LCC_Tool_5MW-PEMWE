@@ -20,7 +20,7 @@
 
 ## Support
 You can contact our team by sending an email to
-  yajing.chen@tu-clausthal.de, cc. yajing.chen@aws-institut.de
+  yajing0220@hotmail.com, cc. yajing.chen@aws-institut.de
 We welcome you to reach out for assistance or to provide feedback at any time!
 
 ## Authors and acknowledgment
