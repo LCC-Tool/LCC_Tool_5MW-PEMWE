@@ -31,7 +31,7 @@ We welcome you to reach out for assistance or to provide feedback at any time!
 
 ### Corresponding Author:
 - Yajing Chen
-  yajing.chen@tu-clausthal.de, cc. yajing.chen@aws-institut.de
+  yajing0220@hotmail.com, cc. yajing.chen@aws-institut.de
   
 ### Acknowledgments:
 Funding: This work was supported by the Energie-Forschungszentrum Niedersachsen (efzn) , the conclusions of this paper are built on the SeLeKT-H2 project.
