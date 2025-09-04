@@ -27,7 +27,7 @@ We welcome you to reach out for assistance or to provide feedback at any time!
 ### Authors:
 - Yajing Chen
 - Mohamed Benchat
-- Christine Minke
+- Prof. Dr.-Ing. Christine Minke
 
 ### Corresponding Author:
 - Yajing Chen
