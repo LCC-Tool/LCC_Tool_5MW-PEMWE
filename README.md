@@ -42,7 +42,7 @@ Copyright (c) 2024 Yajing Chen
 
 If you use our code or paper to do research that gets published, please cite the paper using the below:
 
-Y.Chen; M.Benchat; C.Minke (2024). : How to work with uncertainty in life cycle costing of green energy. example journal, pp.123. Zenodo: (The DOI code will be added after the paper receives permission to publish.)
+Chen, Y., Benchat, M. & Minke, C. Working with uncertainty in life cycle costing: New approach applied to the case study on proton exchange membrane water electrolysis. Front. Energy (2025). https://doi.org/10.1007/s11708-025-1033-1
 
 ## Project status
 The development will continue.
